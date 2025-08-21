@@ -1,0 +1,497 @@
+{
+    "_allocate_inputs": 4,
+    "_allocate_outputs": 4,
+    "cli_parameters": "generate --target stm32l4 --name pqat_model -m /Users/jeremygerster/mlmcu_project/proj/models/pruned_qat_pruned_qat_modelv3.tflite --compression none --verbosity 1 --workspace /var/folders/81/khxbgg4x6g942hpg6lrktv6h0000gn/T/mxAI_workspace106464550139362515881913279069320367 --output /Users/jeremygerster/.stm32cubemx/pqat_model_output",
+    "cli_version": {
+        "extra": "20052",
+        "major": 2,
+        "micro": 0,
+        "minor": 0
+    },
+    "cli_version_str": "2.0.0-20052",
+    "code_size": 0,
+    "compression": [],
+    "date_time": "2025-04-28T20:15:39+0200",
+    "error": 0,
+    "error_str": [],
+    "exec_cmd": "generate",
+    "exec_duration": 0.0,
+    "hash": "0x90411c61fab9242ae0e2c915e7837368",
+    "inputs": [
+        "serving_default_input_210"
+    ],
+    "layers": [
+        {
+            "c_id": [
+                0
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 1920,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        16,
+                        1,
+                        30
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "serving_default_input_210",
+            "original": "",
+            "type": "Input"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 960,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 480,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        16,
+                        1,
+                        30
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [
+                "serving_default_input_210"
+            ],
+            "name": "conversion_0",
+            "original": "QUANTIZE",
+            "type": "Conversion"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 61456,
+                "n_params": 144,
+                "psize": 192,
+                "rom_output": {
+                    "c_size": 1200,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        5,
+                        16,
+                        15
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [
+                "conversion_0"
+            ],
+            "name": "conv2d_1",
+            "original": "CONV_2D",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 7680,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 1,
+            "inputs": [
+                "conv2d_1"
+            ],
+            "name": "nl_1_nl",
+            "original": "CONV_2D",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                1
+            ],
+            "extras": {
+                "n_macc": 7200,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 192
+            },
+            "id": 2,
+            "inputs": [
+                "nl_1_nl"
+            ],
+            "name": "pool_2",
+            "original": "MAX_POOL_2D",
+            "type": "Pool"
+        },
+        {
+            "c_id": [
+                2
+            ],
+            "extras": {
+                "n_macc": 307232,
+                "n_params": 4128,
+                "psize": 4224,
+                "rom_output": {
+                    "c_size": 448,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        2,
+                        32,
+                        7
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [
+                "pool_2"
+            ],
+            "name": "conv2d_3",
+            "original": "CONV_2D",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 2400,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [
+                "conv2d_3"
+            ],
+            "name": "nl_3_nl",
+            "original": "CONV_2D",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                3
+            ],
+            "extras": {
+                "n_macc": 1792,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 4224
+            },
+            "id": 4,
+            "inputs": [
+                "nl_3_nl"
+            ],
+            "name": "pool_4",
+            "original": "MAX_POOL_2D",
+            "type": "Pool"
+        },
+        {
+            "c_id": [
+                4
+            ],
+            "extras": {
+                "n_macc": 229440,
+                "n_params": 16448,
+                "psize": 16640,
+                "rom_output": {
+                    "c_size": 192,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        1,
+                        64,
+                        3
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 5,
+            "inputs": [
+                "pool_4"
+            ],
+            "name": "conv2d_5",
+            "original": "CONV_2D",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 896,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 5,
+            "inputs": [
+                "conv2d_5"
+            ],
+            "name": "nl_5_nl",
+            "original": "CONV_2D",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                5
+            ],
+            "extras": {
+                "n_macc": 768,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 16640
+            },
+            "id": 6,
+            "inputs": [
+                "nl_5_nl"
+            ],
+            "name": "pool_6",
+            "original": "MAX_POOL_2D",
+            "type": "Pool"
+        },
+        {
+            "c_id": [
+                6
+            ],
+            "extras": {
+                "n_macc": 98368,
+                "n_params": 32832,
+                "psize": 33024,
+                "rom_output": {
+                    "c_size": 64,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        1,
+                        64,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 7,
+            "inputs": [
+                "pool_6"
+            ],
+            "name": "conv2d_7",
+            "original": "CONV_2D",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 192,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 7,
+            "inputs": [
+                "conv2d_7"
+            ],
+            "name": "nl_7_nl",
+            "original": "CONV_2D",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                7
+            ],
+            "extras": {
+                "n_macc": 192,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 33024
+            },
+            "id": 8,
+            "inputs": [
+                "nl_7_nl"
+            ],
+            "name": "pool_8",
+            "original": "MEAN",
+            "type": "Pool"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 8,
+            "inputs": [
+                "pool_8"
+            ],
+            "name": "reshape_8_reshape",
+            "original": "MEAN",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [
+                8
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 640,
+                "psize": 640,
+                "rom_size": 680
+            },
+            "id": 9,
+            "inputs": [],
+            "name": "sequential_20_quant_dense_20_MatMulsequential_20_quant_dense_20_LastValueQuant_FakeQuantWithMinMaxVars",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 10,
+                "psize": 40,
+                "rom_size": 0
+            },
+            "id": 9,
+            "inputs": [],
+            "name": "dense_20_bias",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 650,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 10,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        10
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 9,
+            "inputs": [
+                "reshape_8_reshape",
+                "sequential_20_quant_dense_20_MatMulsequential_20_quant_dense_20_LastValueQuant_FakeQuantWithMinMaxVars",
+                "dense_20_bias"
+            ],
+            "name": "gemm_9",
+            "original": "FULLY_CONNECTED",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [
+                9
+            ],
+            "extras": {
+                "n_macc": 150,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 10,
+                    "fmt": {
+                        "format": "s8"
+                    },
+                    "shape": [
+                        10
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 10,
+            "inputs": [
+                "gemm_9"
+            ],
+            "name": "nl_10",
+            "original": "SOFTMAX",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                10
+            ],
+            "extras": {
+                "n_macc": 20,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 40,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        10
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 11,
+            "inputs": [
+                "nl_10"
+            ],
+            "name": "conversion_11",
+            "original": "DEQUANTIZE",
+            "type": "Conversion"
+        }
+    ],
+    "model_files": [
+        "/Users/jeremygerster/mlmcu_project/proj/models/pruned_qat_pruned_qat_modelv3.tflite"
+    ],
+    "model_n_params": 54202,
+    "model_name": "pruned_qat_pruned_qat_modelv3",
+    "model_size": 54760,
+    "model_type": "tflite",
+    "name": "pqat_model",
+    "outputs": [
+        "conversion_11"
+    ],
+    "ram_io_size": [
+        0,
+        0
+    ],
+    "ram_size": 9344,
+    "report_version": 1.1,
+    "rom_cfact": 1.0,
+    "rom_heap_inspector": 2048,
+    "rom_inputs": [
+        {
+            "c_size": 1920,
+            "c_type": "float",
+            "name": "serving_default_input_210"
+        }
+    ],
+    "rom_n_macc": 719396,
+    "rom_outputs": [
+        {
+            "c_size": 40,
+            "c_type": "float",
+            "name": "conversion_11"
+        }
+    ],
+    "rom_size": 54760,
+    "strategy": "",
+    "tools_api_version": "2.0.0-20052",
+    "tools_version": "2.0.0-20052",
+    "val_error": -1.0,
+    "val_error_desc": "None (None) #-1",
+    "val_metrics": []
+}

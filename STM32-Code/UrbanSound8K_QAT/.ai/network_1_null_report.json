@@ -1,0 +1,364 @@
+{
+    "_allocate_inputs": 4,
+    "_allocate_outputs": 4,
+    "cli_parameters": "generate --target stm32l4 --name network_1 -m /Users/jeremygerster/Downloads/test.tflite --compression none --verbosity 1 --workspace /var/folders/81/khxbgg4x6g942hpg6lrktv6h0000gn/T/mxAI_workspace120404452512629217689812150201707727 --output /Users/jeremygerster/.stm32cubemx/network_1_output",
+    "cli_version": {
+        "extra": "20052",
+        "major": 2,
+        "micro": 0,
+        "minor": 0
+    },
+    "cli_version_str": "2.0.0-20052",
+    "code_size": 0,
+    "compression": [],
+    "date_time": "2025-05-01T20:51:00+0200",
+    "error": 0,
+    "error_str": [],
+    "exec_cmd": "generate",
+    "exec_duration": 0.0,
+    "hash": "0xd9f5ab401d750476509d4caf52888e11",
+    "inputs": [
+        "serving_default_input_layer_40"
+    ],
+    "layers": [
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 6448,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        124,
+                        1,
+                        13
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [],
+            "name": "serving_default_input_layer_40",
+            "original": "",
+            "type": "Input"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 206352,
+                "n_params": 144,
+                "psize": 576,
+                "rom_output": {
+                    "c_size": 15744,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        41,
+                        16,
+                        6
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [
+                "serving_default_input_layer_40"
+            ],
+            "name": "conv2d_0",
+            "original": "CONV_2D",
+            "type": "Conv2D"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 25792,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 0,
+            "inputs": [
+                "conv2d_0"
+            ],
+            "name": "nl_0_nl",
+            "original": "CONV_2D",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                0
+            ],
+            "extras": {
+                "n_macc": 23616,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 576
+            },
+            "id": 1,
+            "inputs": [
+                "nl_0_nl"
+            ],
+            "name": "pool_1",
+            "original": "MAX_POOL_2D",
+            "type": "Pool"
+        },
+        {
+            "c_id": [
+                1
+            ],
+            "extras": {
+                "n_macc": 3936,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 64,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        1,
+                        16,
+                        1
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 2,
+            "inputs": [
+                "pool_1"
+            ],
+            "name": "pool_2",
+            "original": "MEAN",
+            "type": "Pool"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 0,
+                "psize": 0,
+                "rom_size": 0
+            },
+            "id": 2,
+            "inputs": [
+                "pool_2"
+            ],
+            "name": "reshape_2_reshape",
+            "original": "MEAN",
+            "type": "Reshape"
+        },
+        {
+            "c_id": [
+                2,
+                3
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 1024,
+                "psize": 4096,
+                "rom_size": 4352
+            },
+            "id": 3,
+            "inputs": [],
+            "name": "arith_constant1",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 64,
+                "psize": 256,
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [],
+            "name": "arith_constant3",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 1088,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 256,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        64
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [
+                "reshape_2_reshape",
+                "arith_constant1",
+                "arith_constant3"
+            ],
+            "name": "gemm_3",
+            "original": "FULLY_CONNECTED",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 64,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 256,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        64
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 3,
+            "inputs": [
+                "gemm_3"
+            ],
+            "name": "nl_3_nl",
+            "original": "FULLY_CONNECTED",
+            "type": "Nonlinearity"
+        },
+        {
+            "c_id": [
+                4
+            ],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 640,
+                "psize": 2560,
+                "rom_size": 2600
+            },
+            "id": 4,
+            "inputs": [],
+            "name": "arith_constant",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 0,
+                "n_params": 10,
+                "psize": 40,
+                "rom_size": 0
+            },
+            "id": 4,
+            "inputs": [],
+            "name": "arith_constant2",
+            "original": "",
+            "type": "Placeholder"
+        },
+        {
+            "c_id": [],
+            "extras": {
+                "n_macc": 650,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 40,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        10
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 4,
+            "inputs": [
+                "nl_3_nl",
+                "arith_constant",
+                "arith_constant2"
+            ],
+            "name": "gemm_4",
+            "original": "FULLY_CONNECTED",
+            "type": "Gemm"
+        },
+        {
+            "c_id": [
+                5
+            ],
+            "extras": {
+                "n_macc": 150,
+                "n_params": 0,
+                "psize": 0,
+                "rom_output": {
+                    "c_size": 40,
+                    "fmt": {
+                        "format": "float"
+                    },
+                    "shape": [
+                        10
+                    ]
+                },
+                "rom_size": 0
+            },
+            "id": 5,
+            "inputs": [
+                "gemm_4"
+            ],
+            "name": "nl_5",
+            "original": "SOFTMAX",
+            "type": "Nonlinearity"
+        }
+    ],
+    "model_files": [
+        "/Users/jeremygerster/Downloads/test.tflite"
+    ],
+    "model_n_params": 1882,
+    "model_name": "test",
+    "model_size": 7528,
+    "model_type": "tflite",
+    "name": "network_1",
+    "outputs": [
+        "nl_5"
+    ],
+    "ram_io_size": [
+        0,
+        0
+    ],
+    "ram_size": 36592,
+    "report_version": 1.1,
+    "rom_cfact": 1.0,
+    "rom_heap_inspector": 2048,
+    "rom_inputs": [
+        {
+            "c_size": 6448,
+            "c_type": "float",
+            "name": "serving_default_input_layer_40"
+        }
+    ],
+    "rom_n_macc": 261648,
+    "rom_outputs": [
+        {
+            "c_size": 40,
+            "c_type": "float",
+            "name": "nl_5"
+        }
+    ],
+    "rom_size": 7528,
+    "strategy": "",
+    "tools_api_version": "2.0.0-20052",
+    "tools_version": "2.0.0-20052",
+    "val_error": -1.0,
+    "val_error_desc": "None (None) #-1",
+    "val_metrics": []
+}

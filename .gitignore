@@ -1,0 +1,10 @@
+__pycache__
+rerecord_data.py
+urbansounds
+cubeai_profiling_reports
+test_wavs
+.DS_Store
+baseline_model.ipynb
+models/old_baseline.tflite
+models/old_final_qat.tflite
+keras_tuner_dir

@@ -1,0 +1,11 @@
+../X-CUBE-AI/App/pqat_model.c:1037:9:ai_pqat_model_get_info	4
+../X-CUBE-AI/App/pqat_model.c:1084:9:ai_pqat_model_get_report	4
+../X-CUBE-AI/App/pqat_model.c:1131:10:ai_pqat_model_get_error	1
+../X-CUBE-AI/App/pqat_model.c:1138:10:ai_pqat_model_create	1
+../X-CUBE-AI/App/pqat_model.c:1184:12:ai_pqat_model_inputs_get	2
+../X-CUBE-AI/App/pqat_model.c:1195:12:ai_pqat_model_outputs_get	2
+../X-CUBE-AI/App/pqat_model.c:1206:11:ai_pqat_model_destroy	1
+../X-CUBE-AI/App/pqat_model.c:1213:9:ai_pqat_model_init	4
+../X-CUBE-AI/App/pqat_model.c:1149:10:ai_pqat_model_create_and_init	8
+../X-CUBE-AI/App/pqat_model.c:1230:8:ai_pqat_model_run	1
+../X-CUBE-AI/App/pqat_model.c:1238:8:ai_pqat_model_forward	1
